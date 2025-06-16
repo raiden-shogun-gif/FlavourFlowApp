@@ -14,7 +14,7 @@ android {
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
-
+        vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildFeatures {
@@ -40,6 +40,10 @@ android {
 }
 
 dependencies {
+    implementation("com.squareup.okhttp3:okhttp:4.9.3") // Check for the latest version
+    implementation("com.google.code.gson:gson:2.8.9") // For JSON parsing
+    implementation(platform("com.google.firebase:firebase-bom:31.0.0")) // Check for the latest version
+    implementation("com.google.firebase:firebase-analytics-ktx") // Example for Firebase Analytics
     implementation("androidx.recyclerview:recyclerview:1.2.1")
     implementation("androidx.room:room-runtime:2.5.0")
     implementation("com.google.android.material:material:1.10.0")

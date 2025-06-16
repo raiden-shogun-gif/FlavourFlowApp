@@ -13,6 +13,10 @@ class TaskAdapter(
     private val onTaskDelete: (Task) -> Unit
 ) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
 
+    fun getTasks(): List<Task> {
+        return tasks
+    }
+
     inner class TaskViewHolder(val view: View) : RecyclerView.ViewHolder(view){
         val deleteButton: ImageButton = itemView.findViewById(R.id.delete_button)
         val checkBox: CheckBox = itemView.findViewById(R.id.task_checkbox)

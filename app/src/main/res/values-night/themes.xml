@@ -14,7 +14,9 @@
         <!-- Customize your dark theme here. -->
     </style>
 
-    <style name="Theme.ToDo" parent="Base.Theme.ToDo" />
+    <style name="Theme.ToDo" parent="Base.Theme.ToDo" >
+        <item name="android:background">@color/black</item>
+    </style>
 
 
     <!-- Optional: Specific theme for CalendarView in dark mode if needed -->
