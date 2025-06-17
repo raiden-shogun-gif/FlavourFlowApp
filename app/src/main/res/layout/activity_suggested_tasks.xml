@@ -29,6 +29,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:text="Add Remaining Tasks to My List" />
+        android:text="Add Remaining Ingredients to My List" />
 
 </LinearLayout>
