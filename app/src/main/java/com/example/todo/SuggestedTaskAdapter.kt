@@ -1,53 +1,47 @@
-package com.example.todo
+package com.example.todo // Your package name
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.todo.databinding.ItemSuggestedTaskBinding // Make sure this matches your XML file name
 
-class SuggestedTaskAdapter(private val tasks: List<String>) :
-    RecyclerView.Adapter<SuggestedTaskAdapter.TaskViewHolder>() {
+class SuggestedTaskAdapter(
+    private var suggestedTasks: MutableList<String>,
+    private val onDeleteClicked: (taskDescription: String, position: Int) -> Unit
+) : RecyclerView.Adapter<SuggestedTaskAdapter.SuggestedTaskViewHolder>() {
 
-    private val checkedStates = BooleanArray(tasks.size) { false }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_suggested_task, parent, false)
-        return TaskViewHolder(view)
-    }
-
-    override fun getItemCount(): Int = tasks.size
-
-    override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
-        val taskDesc = tasks[position]
-        holder.taskDescTextView.text = taskDesc
-        holder.checkBox.isChecked = checkedStates[position]
-
-        holder.checkBox.setOnCheckedChangeListener { _, isChecked ->
-            checkedStates[position] = isChecked
-        }
-
-        holder.itemView.setOnClickListener {
-            val newChecked = !checkedStates[position]
-            checkedStates[position] = newChecked
-            holder.checkBox.isChecked = newChecked
-        }
-    }
-
-    fun getSelectedTasks(): List<String> {
-        val selected = mutableListOf<String>()
-        for (i in tasks.indices) {
-            if (checkedStates[i]) {
-                selected.add(tasks[i])
+    inner class SuggestedTaskViewHolder(val binding: ItemSuggestedTaskBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(taskDescription: String) {
+            binding.suggestedTaskTextView.text = taskDescription
+            binding.deleteSuggestedTaskButton.setOnClickListener {
+                val currentPosition = adapterPosition
+                if (currentPosition != RecyclerView.NO_POSITION) {
+                    onDeleteClicked(suggestedTasks[currentPosition], currentPosition)
+                }
             }
         }
-        return selected
     }
 
-    class TaskViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val checkBox: CheckBox = itemView.findViewById(R.id.taskCheckBox)
-        val taskDescTextView: TextView = itemView.findViewById(R.id.taskDescriptionTextView)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SuggestedTaskViewHolder {
+        val binding = ItemSuggestedTaskBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return SuggestedTaskViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: SuggestedTaskViewHolder, position: Int) {
+        holder.bind(suggestedTasks[position])
+    }
+
+    override fun getItemCount(): Int = suggestedTasks.size
+
+    fun removeItem(position: Int) {
+        if (position >= 0 && position < suggestedTasks.size) {
+            suggestedTasks.removeAt(position)
+            notifyItemRemoved(position)
+            notifyItemRangeChanged(position, suggestedTasks.size) // To update subsequent item positions if needed
+        }
+    }
+
+    fun getTasks(): List<String> {
+        return suggestedTasks.toList() // Return a copy
     }
 }
