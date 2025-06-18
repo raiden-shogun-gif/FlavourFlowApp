@@ -12,4 +12,147 @@
     <color name="my_dark_primary_variant">#3700B3</color> <!-- Often same or darker than light's variant -->
     <color name="my_dark_secondary">#03DAC5</color>
     <color name="my_dark_secondary_variant">#03DAC5</color>
+
+    <!-- Primary Palette -->
+    <color name="md_theme_primary">#6750A4</color> <!-- Example: Purple -->
+    <color name="md_theme_onPrimary">#FFFFFF</color>
+    <color name="md_theme_primaryContainer">#EADDFF</color>
+    <color name="md_theme_onPrimaryContainer">#21005D</color>
+
+    <!-- Secondary Palette -->
+    <color name="md_theme_secondary">#625B71</color> <!-- Example: Mauve -->
+    <color name="md_theme_onSecondary">#FFFFFF</color>
+    <color name="md_theme_primaryFixed">#EADDFF</color>
+    <color name="md_theme_onPrimaryFixed">#21005D</color>
+    <color name="md_theme_primaryFixedDim">#D0BCFF</color>
+    <color name="md_theme_onPrimaryFixedVariant">#4F378B</color>
+    <color name="md_theme_secondaryContainer">#E8DEF8</color>
+    <color name="md_theme_onSecondaryContainer">#1D192B</color>
+    <color name="md_theme_secondaryFixed">#E8DEF8</color>
+    <color name="md_theme_onSecondaryFixed">#1D192B</color>
+    <color name="md_theme_secondaryFixedDim">#CCC2DC</color>
+    <color name="md_theme_onSecondaryFixedVariant">#4A4458</color>
+
+    <!-- Tertiary Palette (Example: Vibrant Pink/Red) -->
+    <color name="md_theme_tertiary">#B52B65</color>
+    <color name="md_theme_onTertiary">#FFFFFF</color>
+    <color name="md_theme_tertiaryContainer">#FFD8E4</color>
+    <color name="md_theme_onTertiaryContainer">#3E001E</color>
+    <color name="md_theme_tertiaryFixed">#FFD8E4</color>
+    <color name="md_theme_onTertiaryFixed">#3E001E</color>
+    <color name="md_theme_tertiaryFixedDim">#EA9DB9</color>
+    <color name="md_theme_onTertiaryFixedVariant">#8A0A4B</color>
+
+    <!-- Error Palette -->
+    <color name="md_theme_error">#B3261E</color>
+    <color name="md_theme_onError">#FFFFFF</color>
+    <color name="md_theme_errorContainer">#F9DEDC</color>
+    <color name="md_theme_onErrorContainer">#410E0B</color>
+
+    <!-- Backgrounds and Surfaces -->
+    <color name="md_theme_background">#FFFBFE</color>
+    <color name="md_theme_onBackground">#1C1B1F</color>
+    <color name="md_theme_surface">#FFFBFE</color> <!-- For cards, sheets, menus -->
+    <color name="md_theme_onSurface">#1C1B1F</color>
+    <color name="md_theme_surfaceVariant">#E7E0EC</color> <!-- Subtle backgrounds, outlines -->
+    <color name="md_theme_onSurfaceVariant">#49454F</color>
+    <color name="md_theme_surfaceContainerHighest">#E6E0E9</color>
+    <color name="md_theme_surfaceContainerHigh">#ECE6F0</color>
+    <color name="md_theme_surfaceContainer">#F3EDF7</color>
+    <color name="md_theme_surfaceContainerLow">#F7F2FA</color>
+    <color name="md_theme_surfaceContainerLowest">#FFFFFF</color>
+    <color name="md_theme_surfaceBright">#FFFBFE</color>
+    <color name="md_theme_surfaceDim">#DED8E1</color>
+
+
+    <!-- Outline -->
+    <color name="md_theme_outline">#79747E</color>
+    <color name="md_theme_outlineVariant">#CAC4D0</color>
+
+    <!-- Inverse (for elements on dark backgrounds in light theme, etc.) -->
+    <color name="md_theme_inverseSurface">#313033</color>
+    <color name="md_theme_inverseOnSurface">#F4EFF4</color>
+    <color name="md_theme_inversePrimary">#D0BCFF</color>
+
+    <!-- Specific UI Elements -->
+    <color name="divider_color">@color/md_theme_outlineVariant</color>
+    <color name="fab_icon_tint_on_primary">@color/md_theme_onPrimary</color>
+    <color name="fab_icon_tint_on_secondary">@color/md_theme_onSecondary</color>
+    <color name="toolbar_title_color">@color/md_theme_onPrimary</color>
+    <color name="delete_icon_color">@color/md_theme_error</color>
+    <color name="remove_icon_color">@color/md_theme_onSurfaceVariant</color>
+
+    <!-- Calendar Specific (These are harder to control without custom views) -->
+    <color name="calendar_selected_date_circle">@color/md_theme_primary</color>
+    <color name="calendar_text_default">@color/md_theme_onSurface</color>
+    <color name="calendar_text_selected">@color/md_theme_onPrimary</color>
+
+    <!-- Task Item Strike-through color -->
+    <color name="task_strikethrough_text">@color/md_theme_onSurfaceVariant</color>
+    <!-- ... Your existing light theme colors ... -->
+
+    <!-- Dark Theme Palette (Example - Replace with your generated values) -->
+    <color name="md_theme_dark_primary">#D0BCFF</color>
+    <color name="md_theme_dark_onPrimary">#381E72</color>
+    <color name="md_theme_dark_primaryContainer">#4F378B</color>
+    <color name="md_theme_dark_onPrimaryContainer">#EADDFF</color>
+    <color name="md_theme_dark_primaryFixed">#EADDFF</color>
+    <color name="md_theme_dark_onPrimaryFixed">#21005D</color>
+    <color name="md_theme_dark_primaryFixedDim">#D0BCFF</color>
+    <color name="md_theme_dark_onPrimaryFixedVariant">#4F378B</color>
+
+    <color name="md_theme_dark_secondary">#CCC2DC</color>
+    <color name="md_theme_dark_onSecondary">#332D41</color>
+    <color name="md_theme_dark_secondaryContainer">#4A4458</color>
+    <color name="md_theme_dark_onSecondaryContainer">#E8DEF8</color>
+    <color name="md_theme_dark_secondaryFixed">#E8DEF8</color>
+    <color name="md_theme_dark_onSecondaryFixed">#1D192B</color>
+    <color name="md_theme_dark_secondaryFixedDim">#CCC2DC</color>
+    <color name="md_theme_dark_onSecondaryFixedVariant">#4A4458</color>
+
+    <color name="md_theme_dark_tertiary">#EFB8C8</color>
+    <color name="md_theme_dark_onTertiary">#492532</color>
+    <color name="md_theme_dark_tertiaryContainer">#633B48</color>
+    <color name="md_theme_dark_onTertiaryContainer">#FFD8E4</color>
+    <color name="md_theme_dark_tertiaryFixed">#FFD8E4</color>
+    <color name="md_theme_dark_onTertiaryFixed">#31111D</color>
+    <color name="md_theme_dark_tertiaryFixedDim">#EFB8C8</color>
+    <color name="md_theme_dark_onTertiaryFixedVariant">#633B48</color>
+
+    <color name="md_theme_dark_error">#F2B8B5</color>
+    <color name="md_theme_dark_onError">#601410</color>
+    <color name="md_theme_dark_errorContainer">#8C1D18</color>
+    <color name="md_theme_dark_onErrorContainer">#F9DEDC</color>
+
+    <color name="md_theme_dark_background">#1C1B1F</color>
+    <color name="md_theme_dark_onBackground">#E6E1E5</color>
+    <color name="md_theme_dark_surface">#1C1B1F</color>
+    <color name="md_theme_dark_onSurface">#E6E1E5</color>
+    <color name="md_theme_dark_surfaceVariant">#49454F</color>
+    <color name="md_theme_dark_onSurfaceVariant">#CAC4D0</color>
+    <color name="md_theme_dark_surfaceContainerHighest">#36343B</color>
+    <color name="md_theme_dark_surfaceContainerHigh">#2B2930</color>
+    <color name="md_theme_dark_surfaceContainer">#211F26</color>
+    <color name="md_theme_dark_surfaceContainerLow">#1D1B22</color>
+    <color name="md_theme_dark_surfaceContainerLowest">#100E17</color>
+    <color name="md_theme_dark_surfaceBright">#38373B</color>
+    <color name="md_theme_dark_surfaceDim">#141317</color>
+
+
+    <color name="md_theme_dark_outline">#938F99</color>
+    <color name="md_theme_dark_outlineVariant">#49454F</color>
+
+    <color name="md_theme_dark_inverseSurface">#E6E1E5</color>
+    <color name="md_theme_dark_inverseOnSurface">#313033</color>
+    <color name="md_theme_dark_inversePrimary">#6750A4</color>
+
+    <!-- Specific UI Elements for Dark Mode (if they differ beyond theme attributes) -->
+    <color name="dark_divider_color">@color/md_theme_dark_outlineVariant</color>
+    <color name="dark_fab_icon_tint_on_primary">@color/md_theme_dark_onPrimary</color>
+    <color name="dark_fab_icon_tint_on_secondary">@color/md_theme_dark_onSecondary</color>
+    <color name="dark_toolbar_title_color">@color/md_theme_dark_onPrimary</color> <!-- if toolbar is primary -->
+    <color name="dark_delete_icon_color">@color/md_theme_dark_error</color>
+    <color name="dark_remove_icon_color">@color/md_theme_dark_onSurfaceVariant</color>
+
+    <color name="dark_task_strikethrough_text">@color/md_theme_dark_onSurfaceVariant</color>
 </resources>

@@ -16,4 +16,45 @@
     <style name="YourAppCalendarTheme" parent="ThemeOverlay.Material3.MaterialCalendar">
         <item name="colorPrimary">@color/my_light_primary</item>
     </style>
+
+        <!-- Shape Styles -->
+    <style name="ShapeAppearance.App.SmallComponent"
+        parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item> <!-- Adjust as needed -->
+    </style>
+
+    <style name="ShapeAppearance.App.MediumComponent"
+        parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item> <!-- Adjust as needed -->
+    </style>
+
+    <style name="ShapeAppearance.App.LargeComponent"
+        parent="ShapeAppearance.Material3.LargeComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item> <!-- Adjust as needed -->
+    </style>
+
+        <!-- Custom Material Alert Dialog for rounded corners and styling -->
+    <style name="ThemeOverlay.App.MaterialAlertDialog"
+        parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.MediumComponent
+        </item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.App.Button</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.App.Button.TextButton</item>
+        <item name="buttonBarNeutralButtonStyle">@style/Widget.App.Button.TextButton</item>
+    </style>
+
+        <!-- Custom Button Styles (Examples) -->
+    <style name="Widget.App.Button" parent="Widget.Material3.Button">
+        <item name="shapeAppearance">@style/ShapeAppearance.App.SmallComponent</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+    </style>
+    <style name="Widget.App.Button.TextButton" parent="Widget.Material3.Button.TextButton.Dialog">
+        <!-- You can customize text buttons used in dialogs further if needed -->
+    </style>
+
+
 </resources>
