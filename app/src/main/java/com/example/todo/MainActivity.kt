@@ -1,5 +1,4 @@
-package com.example.todo // Your actual package name
-
+package com.example.todo
 import android.Manifest
 import android.content.Context
 import android.content.Intent
@@ -9,7 +8,7 @@ import android.net.NetworkCapabilities
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
-import android.util.Log // For debugging API calls
+import android.util.Log
 import android.widget.CalendarView
 import android.widget.EditText
 import android.widget.Toast
@@ -22,8 +21,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.todo.databinding.ActivityMainBinding
 import com.google.gson.Gson
 import com.google.gson.JsonParser
-// Remove if not using @SerializedName directly in data classes here
-// import com.google.gson.annotations.SerializedName
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -37,16 +34,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var db: AppDatabase
     private lateinit var adapter: TaskAdapter
     private var selectedDate: String = ""
-
-    // Replace with your actual Gemini API key from Google Cloud Console
-    // Ensure this key is enabled for the "Generative Language API"
-    private val APIKEY = "AIzaSyDg95sLvqJ2y80NRt-JnhD6ixPcxI7X7zU"
+    private val APIKEY = "AIzaSyC-A4JRlExNT500cOthK8FrOzYr_I37lzY"
 
     private val client = OkHttpClient()
     private val gson = Gson()
 
-    private val REQUEST_CODE_SUGGESTED_TASKS = 1 // Used with onActivityResult
-
+    private val REQUEST_CODE_SUGGESTED_TASKS = 1
     private val requestInternetPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
             if (isGranted) {

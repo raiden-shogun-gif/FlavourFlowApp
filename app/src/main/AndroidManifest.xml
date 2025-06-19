@@ -24,7 +24,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".SuggestedTasksActivity" />
+        <activity android:name=".SuggestedTasksActivity"
+            android:theme="@style/Theme.ToDo" />
     </application>
 
 </manifest>

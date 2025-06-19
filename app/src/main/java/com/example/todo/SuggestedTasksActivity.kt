@@ -3,6 +3,7 @@ package com.example.todo // Your package name
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -111,6 +112,7 @@ class SuggestedTasksActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
+        super.onBackPressed()
         // Similar logic to onSupportNavigateUp for the system back button
         onSupportNavigateUp()
     }
