@@ -146,11 +146,11 @@
     <color name="md_theme_dark_inverseOnSurface">#313033</color>
     <color name="md_theme_dark_inversePrimary">#6750A4</color>
 
-    <!-- Specific UI Elements for Dark Mode (if they differ beyond theme attributes) -->
+
     <color name="dark_divider_color">@color/md_theme_dark_outlineVariant</color>
     <color name="dark_fab_icon_tint_on_primary">@color/md_theme_dark_onPrimary</color>
     <color name="dark_fab_icon_tint_on_secondary">@color/md_theme_dark_onSecondary</color>
-    <color name="dark_toolbar_title_color">@color/md_theme_dark_onPrimary</color> <!-- if toolbar is primary -->
+    <color name="dark_toolbar_title_color">@color/md_theme_dark_onPrimary</color>
     <color name="dark_delete_icon_color">@color/md_theme_dark_error</color>
     <color name="dark_remove_icon_color">@color/md_theme_dark_onSurfaceVariant</color>
 

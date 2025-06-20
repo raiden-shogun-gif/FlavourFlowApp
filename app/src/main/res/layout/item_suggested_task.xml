@@ -30,7 +30,7 @@
             app:layout_constraintEnd_toStartOf="@+id/deleteSuggestedTaskButton"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginEnd="12dp"/> <!-- Space before the button -->
+            android:layout_marginEnd="12dp"/>
 
             <ImageButton
                 android:id="@+id/deleteSuggestedTaskButton"

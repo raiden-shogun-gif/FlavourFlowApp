@@ -15,7 +15,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true">
-        <!-- Assuming you have a theme like Theme.ToDo.SuggestedTasks setting the toolbar style -->
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/suggestedTasksToolbar"
             style="?attr/toolbarStyle"
@@ -24,11 +23,6 @@
             app:navigationIcon="?attr/homeAsUpIndicator"
             app:titleTextColor="?attr/colorOnPrimary"
             tools:title="Your Dynamic Title Here"/>
-        <!-- tools:title helps in preview -->
-        <!-- Note: If your toolbarStyle in the theme already sets titleTextColor and background, -->
-        <!-- you might not need to set app:titleTextColor here explicitly if it's the same. -->
-        <!-- If using Theme.ToDo.SuggestedTasks which sets toolbarStyle to Widget.App.Toolbar.PrimaryBackground -->
-        <!-- these title/nav icon colors will be ?attr/colorOnPrimary -->
     </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
@@ -44,7 +38,6 @@
         android:textColor="?attr/colorOnSurface"
         android:visibility="gone"
         tools:visibility="visible"/>
-    <!-- Initially gone, make visible in code if tasks exist -->
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -64,7 +57,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp"
-        android:background="?attr/colorSurfaceContainer"> <!-- Subtle background for button area -->
+        android:background="?attr/colorSurfaceContainer">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/addSelectedTasksButton"

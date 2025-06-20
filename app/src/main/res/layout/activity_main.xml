@@ -38,7 +38,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tasksRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="210dp"
         android:layout_weight="1"
         android:clipToPadding="false"
         android:paddingStart="8dp"
@@ -53,6 +53,7 @@
         android:layout_margin="16dp"
         android:contentDescription="@string/Add_button"
         app:srcCompat="@android:drawable/ic_input_add" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/AIbutton"
         android:layout_width="wrap_content"

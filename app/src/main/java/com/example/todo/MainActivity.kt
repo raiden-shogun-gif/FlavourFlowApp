@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var db: AppDatabase
     private lateinit var adapter: TaskAdapter
     private var selectedDate: String = ""
-    private val APIKEY = "AIzaSyC-A4JRlExNT500cOthK8FrOzYr_I37lzY"
+    private val APIKEY = ""      //Add your API key here of gemini
 
     private val client = OkHttpClient()
     private val gson = Gson()
@@ -55,13 +55,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         db = AppDatabase.getInstance(this)
-        // Initialize selectedDate with current date from CalendarView
         selectedDate = getDateString(binding.calendarView.date)
 
         adapter = TaskAdapter(emptyList(), { task, isChecked ->
             task.isCompleted = isChecked
             db.taskDao().updateTask(task)
-            // No need to reload all tasks here unless the UI needs a full refresh for other reasons
         }, { task ->
             showDeleteConfirmationDialog(task)
         })
@@ -72,7 +70,6 @@ class MainActivity : AppCompatActivity() {
         loadTasks(selectedDate)
 
         binding.calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
-            // Month is 0-indexed, so add 1
             selectedDate = String.format(Locale.getDefault(), "%04d-%02d-%02d", year, month + 1, dayOfMonth)
             loadTasks(selectedDate)
         }
@@ -81,7 +78,7 @@ class MainActivity : AppCompatActivity() {
             showAddTaskDialog()
         }
 
-        binding.AIbutton.setOnClickListener { // Assuming aibutton is your "compass" button
+        binding.AIbutton.setOnClickListener {
             handleAIFeatureClick()
         }
     }
@@ -188,25 +185,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun fetchTasksFromAI(prompt: String) {
-        // IMPORTANT: Choose the correct model name and ensure your API key has access to it.
-        // Common models: "gemini-pro", "gemini-1.5-flash-latest"
-        // Verify the exact endpoint for the model you are using.
-        val modelName = "gemini-1.5-flash-latest" // Or "gemini-pro"
+        val modelName = "gemini-1.5-flash-latest"
         val apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/$modelName:generateContent?key=$APIKEY"
 
         val partsArray = listOf(mapOf("text" to prompt))
         val contentsArray = listOf(mapOf("parts" to partsArray))
-
-        // Adjust generationConfig as needed
         val generationConfig = mapOf(
             "temperature" to 0.7,
             "topK" to 1,
             "topP" to 1.0,
-            "maxOutputTokens" to 256, // Max tokens the model should generate
+            "maxOutputTokens" to 256,
             "stopSequences" to emptyList<String>()
         )
 
-        // Safety settings - adjust thresholds as needed (BLOCK_NONE, BLOCK_LOW_AND_ABOVE, BLOCK_MEDIUM_AND_ABOVE, BLOCK_ONLY_HIGH)
         val safetySettingsArray = listOf(
             mapOf("category" to "HARM_CATEGORY_HARASSMENT", "threshold" to "BLOCK_MEDIUM_AND_ABOVE"),
             mapOf("category" to "HARM_CATEGORY_HATE_SPEECH", "threshold" to "BLOCK_MEDIUM_AND_ABOVE"),
@@ -221,7 +212,7 @@ class MainActivity : AppCompatActivity() {
         )
 
         val requestJson = gson.toJson(requestData)
-        Log.d("GeminiAPI", "Request JSON: $requestJson") // For debugging
+        Log.d("GeminiAPI", "Request JSON: $requestJson")
 
         val mediaType = "application/json; charset=utf-8".toMediaType()
         val requestBody = requestJson.toRequestBody(mediaType)
@@ -241,7 +232,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call, response: Response) {
-                val responseBodyString = response.body?.string() // Read body once
+                val responseBodyString = response.body?.string()
                 Log.d("GeminiAPI", "Response Code: ${response.code}")
                 Log.d("GeminiAPI", "Response Body: $responseBodyString")
 
@@ -249,7 +240,6 @@ class MainActivity : AppCompatActivity() {
                     var errorMessage = "API error: ${response.code} - ${response.message}"
                     if (!responseBodyString.isNullOrEmpty()) {
                         errorMessage += "\nDetails: $responseBodyString"
-                        // Try to parse detailed error message if API provides it in JSON
                         try {
                             val errorJson = JsonParser.parseString(responseBodyString).asJsonObject
                             if (errorJson.has("error") && errorJson["error"].isJsonObject) {
@@ -328,7 +318,6 @@ class MainActivity : AppCompatActivity() {
                     val suggestedTasks = generatedText.lines()
                         .mapNotNull { line ->
                             val trimmedLine = line.trim()
-                            // Remove common list prefixes like "-", "*", "1.", etc.
                             trimmedLine.removePrefix("-").removePrefix("*").replaceFirst(Regex("^\\d+\\.\\s*"), "").trim()
                         }
                         .filter { it.isNotBlank() }
@@ -359,14 +348,10 @@ class MainActivity : AppCompatActivity() {
         // Consider using the Activity Result API if this is a new Activity interaction
         startActivityForResult(intent, REQUEST_CODE_SUGGESTED_TASKS)
     }
-
-    // This is the older way to handle activity results.
-    // For new interactions, prefer registerForActivityResult.
     @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CODE_SUGGESTED_TASKS && resultCode == RESULT_OK) {
-            // Tasks were added or modified in SuggestedTasksActivity, reload for the current date.
             loadTasks(selectedDate)
             Toast.makeText(this, "Tasks updated from suggestions.", Toast.LENGTH_SHORT).show()
         }
@@ -374,7 +359,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadTasks(date: String) {
         val tasks = db.taskDao().getTasksForDate(date)
-        adapter.updateList(tasks) // Make sure TaskAdapter has an updateList method
+        adapter.updateList(tasks)
     }
 
     private fun showAddTaskDialog() {
@@ -386,9 +371,9 @@ class MainActivity : AppCompatActivity() {
         builder.setPositiveButton("Add") { dialog, _ ->
             val description = input.text.toString().trim()
             if (description.isNotEmpty()) {
-                val newTask = Task(date = selectedDate, description = description) // isCompleted defaults to false
+                val newTask = Task(date = selectedDate, description = description)
                 db.taskDao().insertTask(newTask)
-                loadTasks(selectedDate) // Refresh list
+                loadTasks(selectedDate)
             } else {
                 Toast.makeText(this, "Field cannot be empty", Toast.LENGTH_SHORT).show()
             }
@@ -404,7 +389,7 @@ class MainActivity : AppCompatActivity() {
             .setMessage("Are you sure you want to delete '${task.description}'?")
             .setPositiveButton("Delete") { dialog, _ ->
                 db.taskDao().deleteTask(task)
-                loadTasks(selectedDate) // Refresh list
+                loadTasks(selectedDate)
                 Toast.makeText(this, "Item deleted", Toast.LENGTH_SHORT).show()
                 dialog.dismiss()
             }

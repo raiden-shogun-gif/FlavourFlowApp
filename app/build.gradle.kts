@@ -40,19 +40,15 @@ android {
 }
 
 dependencies {
-    implementation(platform("com.google.firebase:firebase-bom:31.0.0")) // Check for the latest version
-    implementation("com.google.firebase:firebase-analytics-ktx") // Example for Firebase Analytics
+    implementation(platform("com.google.firebase:firebase-bom:31.0.0"))
+    implementation("com.google.firebase:firebase-analytics-ktx")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
     implementation("androidx.room:room-runtime:2.5.0")
     implementation("com.google.android.material:material:1.12.0")
- // Use the latest version
     kapt("androidx.room:room-compiler:2.5.0")
     implementation("com.google.android.material:material:1.8.0")
-    // For OkHttp (networking)
-    implementation("com.squareup.okhttp3:okhttp:4.12.0") // Or latest version
-    // For Gson (JSON parsing)
-    implementation("com.google.code.gson:gson:2.10.1") // Or latest version
-    // AndroidX libraries for UI components, Room, etc.
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("com.google.code.gson:gson:2.10.1")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

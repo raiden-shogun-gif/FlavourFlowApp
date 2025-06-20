@@ -1,9 +1,9 @@
-package com.example.todo // Your package name
+package com.example.todo
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.todo.databinding.ItemSuggestedTaskBinding // Make sure this matches your XML file name
+import com.example.todo.databinding.ItemSuggestedTaskBinding
 
 class SuggestedTaskAdapter(
     private var suggestedTasks: MutableList<String>,
@@ -37,11 +37,11 @@ class SuggestedTaskAdapter(
         if (position >= 0 && position < suggestedTasks.size) {
             suggestedTasks.removeAt(position)
             notifyItemRemoved(position)
-            notifyItemRangeChanged(position, suggestedTasks.size) // To update subsequent item positions if needed
+            notifyItemRangeChanged(position, suggestedTasks.size)
         }
     }
 
     fun getTasks(): List<String> {
-        return suggestedTasks.toList() // Return a copy
+        return suggestedTasks.toList()
     }
 }

@@ -1,4 +1,4 @@
-package com.example.todo // Your package name
+package com.example.todo
 
 import android.app.Activity
 import android.content.Intent
@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.todo.databinding.ActivitySuggestedTasksBinding // Make sure this matches your XML file name
+import com.example.todo.databinding.ActivitySuggestedTasksBinding
 
 class SuggestedTasksActivity : AppCompatActivity() {
 
@@ -16,7 +16,7 @@ class SuggestedTasksActivity : AppCompatActivity() {
     private lateinit var suggestedTaskAdapter: SuggestedTaskAdapter
     private var originalTasks: ArrayList<String> = arrayListOf()
     private lateinit var selectedDate: String
-    private lateinit var db: AppDatabase // For adding tasks
+    private lateinit var db: AppDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +24,7 @@ class SuggestedTasksActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setSupportActionBar(binding.suggestedTasksToolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true) // Optional: for back navigation
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         db = AppDatabase.getInstance(this)
 
@@ -33,7 +33,7 @@ class SuggestedTasksActivity : AppCompatActivity() {
 
         if (originalTasks.isEmpty() || selectedDate.isEmpty()) {
             Toast.makeText(this, "No tasks or date provided.", Toast.LENGTH_LONG).show()
-            finish() // Close if no data
+            finish()
             return
         }
 
@@ -41,18 +41,15 @@ class SuggestedTasksActivity : AppCompatActivity() {
 
         binding.addSelectedTasksButton.setOnClickListener {
             addRemainingTasksToDatabase()
-            // Indicate that tasks were processed and MainActivity should reload
             setResult(Activity.RESULT_OK)
-            finish() // Close this activity
+            finish()
         }
     }
 
     private fun setupRecyclerView() {
-        // Use a mutable copy for the adapter so we can remove items
         val mutableTasks = ArrayList(originalTasks)
 
         suggestedTaskAdapter = SuggestedTaskAdapter(mutableTasks) { taskDescription, position ->
-            // Show confirmation dialog before deleting
             AlertDialog.Builder(this)
                 .setTitle("Delete Suggestion")
                 .setMessage("Are you sure you want to remove '${taskDescription}' from the suggestions?")
@@ -84,9 +81,8 @@ class SuggestedTasksActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        // Handle the Toolbar's back button
-        // Ask if user wants to discard changes or save them
-        if (suggestedTaskAdapter.itemCount != originalTasks.size) { // Check if any tasks were deleted
+
+        if (suggestedTaskAdapter.itemCount != originalTasks.size) {
             AlertDialog.Builder(this)
                 .setTitle("Unsaved Changes")
                 .setMessage("You have unsaved changes. Do you want to add the remaining tasks before leaving?")
@@ -96,16 +92,16 @@ class SuggestedTasksActivity : AppCompatActivity() {
                     finish()
                 }
                 .setNegativeButton("Discard & Leave") { _, _ ->
-                    setResult(Activity.RESULT_CANCELED) // Or RESULT_OK if MainActivity should still refresh
+                    setResult(Activity.RESULT_CANCELED)
                     finish()
                 }
                 .setNeutralButton("Stay") { dialog, _ ->
                     dialog.dismiss()
                 }
                 .show()
-            return true // We've handled the event
+            return true
         } else {
-            setResult(Activity.RESULT_CANCELED) // No changes, or user chose to go back without saving
+            setResult(Activity.RESULT_CANCELED)
             finish()
             return true
         }
@@ -113,7 +109,6 @@ class SuggestedTasksActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        // Similar logic to onSupportNavigateUp for the system back button
         onSupportNavigateUp()
     }
 }

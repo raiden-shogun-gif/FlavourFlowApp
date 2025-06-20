@@ -11,17 +11,11 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your dark theme here. -->
     </style>
-
     <style name="Theme.ToDo" parent="Base.Theme.ToDo" >
         <item name="android:background">@color/black</item>
     </style>
-
-
-    <!-- Optional: Specific theme for CalendarView in dark mode if needed -->
     <style name="YourAppCalendarTheme" parent="ThemeOverlay.Material3.MaterialCalendar">
         <item name="colorPrimary">@color/my_dark_primary</item>
-        <!-- Or your desired calendar selection color for dark theme -->
     </style>
 </resources>
